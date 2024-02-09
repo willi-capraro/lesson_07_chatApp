@@ -1,25 +1,34 @@
 import java.util.Scanner;
 public class ChatApp {
 
-    private static final int MAX_CHAT_ENTRIES = 9999999;
+
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         String input;
-        int arrayCount = 0;
 
-        String[] chatArray;
-        chatArray = new String[MAX_CHAT_ENTRIES];
+        String[] chatArray = new String[0];
+
         do{
+            // Input new chat message
             System.out.print("--> ");
             input = s.nextLine();
-            chatArray[arrayCount] = input;
-            arrayCount = arrayCount + 1;
-            clearScreen();
-            for (int i = 0; i < arrayCount; i++) {
-                System.out.println("[Wilhelm]: " + chatArray[i]);
 
+            // Copy "old" (last iteration of loop) array into current + allow for one more element
+            String[] oldArray = chatArray;
+            chatArray = new String[oldArray.length + 1];
+            chatArray[chatArray.length - 1] = input;
+
+            // Print all chat messages
+            clearScreen();
+            for (int i = 0; i < chatArray.length ; i++) {
+                if (i < chatArray.length - 1) {
+                    chatArray[i] = oldArray[i];
+                }
+
+                System.out.println("[Wilhelm]: " + chatArray[i]);
             }
+
 
         } while(!input.contentEquals("stop"));
 
@@ -27,8 +36,6 @@ public class ChatApp {
     }
 
     private static void clearScreen() {
-        for (int i = 0; i <= 100; i++) {
-            System.out.println("");
-        }
+        System.out.println("\r\n".repeat(25));
     }
 }
