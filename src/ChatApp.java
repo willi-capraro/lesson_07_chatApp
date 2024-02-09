@@ -6,9 +6,10 @@ public class ChatApp {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         String input;
-
+        String inputName;
         String[] chatArray = new String[0];
-
+        System.out.print("input name: ");
+        inputName = s.nextLine();
         do{
             // Input new chat message
             System.out.print("--> ");
@@ -26,7 +27,7 @@ public class ChatApp {
                     chatArray[i] = oldArray[i];
                 }
 
-                System.out.println("[Wilhelm]: " + chatArray[i]);
+                System.out.println("[" + inputName + "]: "+ chatArray[i]);
             }
 
 
