@@ -7,10 +7,24 @@ public class ChatApp {
         Scanner s = new Scanner(System.in);
         String input;
         String inputName;
+        String inputPassword;
+
+
+        do {
+            System.out.print("input Password: ");
+            inputPassword = s.nextLine();
+
+        }while(!inputPassword.contentEquals("max"));
+
+
+
+
         String[] chatArray = new String[0];
         System.out.print("input name: ");
         inputName = s.nextLine();
-        do{
+
+
+        do {
             // Input new chat message
             System.out.print("--> ");
             input = s.nextLine();
@@ -22,16 +36,15 @@ public class ChatApp {
 
             // Print all chat messages
             clearScreen();
-            for (int i = 0; i < chatArray.length ; i++) {
+            for (int i = 0; i < chatArray.length; i++) {
                 if (i < chatArray.length - 1) {
                     chatArray[i] = oldArray[i];
                 }
 
-                System.out.println("[" + inputName + "]: "+ chatArray[i]);
+                System.out.println("[" + inputName + "]: " + chatArray[i]);
             }
+        }while(!input.contentEquals("stop"));
 
-
-        } while(!input.contentEquals("stop"));
 
 
     }
